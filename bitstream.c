@@ -80,8 +80,9 @@ void printBinary(unsigned char *stream, int nbytes) {
 			else
 				printf("0");
 		}
-		getchar();
+		printf(" ");
   	}
+    printf("\n");
 }
 
 int main(int argc, char const *argv[]){
@@ -93,11 +94,15 @@ int main(int argc, char const *argv[]){
     //  14    |  1110  |      4
     //  30    |   110  |      3
 
-
     position = bit_stream_write(stream, &bits_left, position, 30, 5);
     position = bit_stream_write(stream, &bits_left, position, 14, 4);
     position = bit_stream_write(stream, &bits_left, position,  6, 3);
 
+    //Print bit stream
+    printf("Bit Stream: ");
+    printBinary(stream, position + 1);
+
+    //Lets read from beginning
     position = 0;
     bits_left = 8;
 
